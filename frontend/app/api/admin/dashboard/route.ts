@@ -85,7 +85,7 @@ interface DashboardMetrics {
     type: 'error' | 'warning' | 'info'
     message: string
     timestamp: Date
-    source?: PropertySource
+    source?: 'LOCAL' | 'LITEAPI'
   }>
 }
 
@@ -189,7 +189,7 @@ export async function GET(request: NextRequest) {
           {
             id: 'local_premium_rio_001',
             name: 'Cobertura Premium Copacabana',
-            source: PropertySource.LOCAL,
+            source: 'LOCAL' | 'LITEAPI'.LOCAL,
             bookings: 47,
             revenue: 21150.00,
             rating: 4.97
@@ -197,7 +197,7 @@ export async function GET(request: NextRequest) {
           {
             id: 'liteapi_hotel_sao_paulo_luxury',
             name: 'Hotel Fasano São Paulo',
-            source: PropertySource.LITEAPI,
+            source: 'LOCAL' | 'LITEAPI'.LITEAPI,
             bookings: 89,
             revenue: 67234.50,
             rating: 4.91
@@ -205,7 +205,7 @@ export async function GET(request: NextRequest) {
           {
             id: 'local_beach_house_buzios',
             name: 'Casa de Praia em Búzios',
-            source: PropertySource.LOCAL,
+            source: 'LOCAL' | 'LITEAPI'.LOCAL,
             bookings: 32,
             revenue: 19840.00,
             rating: 4.89
@@ -242,14 +242,14 @@ export async function GET(request: NextRequest) {
           type: 'error' as const,
           message: 'LiteAPI service is currently unavailable',
           timestamp: new Date(),
-          source: PropertySource.LITEAPI
+          source: 'LOCAL' | 'LITEAPI'.LITEAPI
         }]),
         ...(usageStats.liteApi.remainingQuota < 1000 ? [{
           id: 'quota_low',
           type: 'warning' as const,
           message: `LiteAPI quota running low: ${usageStats.liteApi.remainingQuota} requests remaining`,
           timestamp: new Date(),
-          source: PropertySource.LITEAPI
+          source: 'LOCAL' | 'LITEAPI'.LITEAPI
         }] : []),
         ...(cacheStats.performance.hitRate < 0.5 ? [{
           id: 'cache_low',

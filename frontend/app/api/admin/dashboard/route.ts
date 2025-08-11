@@ -7,7 +7,8 @@ import { bookingService } from '@/lib/services/booking-service'
 import { monitoringService } from '@/lib/services/monitoring-service'
 import { cacheService } from '@/lib/cache/cache-service'
 import { requireAdmin, withRateLimit, withCors, withSecurity } from '@/lib/middleware/auth-middleware'
-
+import { unifiedPropertyService } from '@/lib/services/unified-property-service'
+  import { liteApiService } from '@/lib/services/liteapi'
 interface DashboardMetrics {
   overview: {
     totalProperties: number

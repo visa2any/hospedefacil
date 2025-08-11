@@ -25,5 +25,11 @@
   },
   "engines": {
     "node": ">=18.17.0"
+  },
+  "dependencies": {
+    "mercadopago": "^2.8.0",
+    "pino": "^9.8.0",
+    "sentry": "^0.1.2",
+    "winston": "^3.17.0"
   }
 }

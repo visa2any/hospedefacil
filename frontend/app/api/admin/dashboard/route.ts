@@ -67,7 +67,7 @@ interface DashboardMetrics {
     properties: Array<{
       id: string
       name: string
-      source: PropertySource
+      source: 'LOCAL' | 'LITEAPI'
       bookings: number
       revenue: number
       rating: number
